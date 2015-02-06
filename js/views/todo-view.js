@@ -20,6 +20,7 @@ var app = app || {};
 			'click .toggle': 'toggleCompleted',
 			'dblclick label': 'edit',
 			'click .edit-btn': 'edit',
+			'click .priority-btn': 'prioritize',
 			'click .destroy': 'clear',
 			'keypress .edit': 'updateOnEnter',
 			'keydown .edit': 'revertOnEscape',
@@ -75,6 +76,11 @@ var app = app || {};
 		edit: function () {
 			this.$el.addClass('editing');
 			this.$input.focus();
+		},
+
+		// Toggle the '"prioritized"; state of the model.
+		prioritize: function() {
+			this.model.togglePrioritized();
 		},
 
 		// Close the `"editing"` mode, saving changes to the todo.
